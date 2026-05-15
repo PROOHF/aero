@@ -1,254 +1,117 @@
 <!DOCTYPE html>
 <html lang="sv">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aero - Intervals calculator</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aero - Intervals calculator</title>
     <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Barlow:wght@400;500&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Barlow:wght@400;500&display=swap"
+      rel="stylesheet">
     <!-- Styles -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="imag/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <header>
+    <header>
+      <div class="container">
+        <h1>AERO - Intervals calculator<span>.</span></h1>
+        <p>Calculate your intervals fast and easy.</p>
+      </div>
+    </header>
+
     <div class="container">
-      <h1>AERO - Intervals calculator<span>.</span></h1>
-      <p>Calculate your intervals fast and easy.</p>
-    </div>
-  </header>
 
-  <div class="container">
-
-    <div class="section">
-      <div class="section-label">Tempo</div>
-      <input type="text" id="tempo" placeholder="4:10" maxlength="5" inputmode="numeric">
-      <div class="input-hint">Min:sec per kilometer - example. 4:10</div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">Number of intervals</div>
-      <input type="number" id="antal" placeholder="5" min="1" max="50" inputmode="numeric">
-      <div class="quick-btns" id="antal-btns">
-        <button class="quick-btn" data-target="antal" data-val="3">3</button>
-        <button class="quick-btn" data-target="antal" data-val="4">4</button>
-        <button class="quick-btn" data-target="antal" data-val="5">5</button>
-        <button class="quick-btn" data-target="antal" data-val="6">6</button>
-        <button class="quick-btn" data-target="antal" data-val="8">8</button>
-        <button class="quick-btn" data-target="antal" data-val="10">10</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">Distance per interval</div>
-      <div class="input-row">
-        <input type="number" id="langd" placeholder="400" min="1" inputmode="numeric">
-        <span style="color: var(--text-muted); font-size: 14px; white-space: nowrap;">meters</span>
-      </div>
-      <div class="quick-btns" id="langd-btns">
-        <button class="quick-btn" data-target="langd" data-val="200">200</button>
-        <button class="quick-btn" data-target="langd" data-val="400">400</button>
-        <button class="quick-btn" data-target="langd" data-val="600">600</button>
-        <button class="quick-btn" data-target="langd" data-val="800">800</button>
-        <button class="quick-btn" data-target="langd" data-val="1000">1000</button>
-        <button class="quick-btn" data-target="langd" data-val="1200">1200</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <label class="vila-toggle">
-        <input type="checkbox" id="vila-check">
-        <span>Add rest between intervals?</span>
-      </label>
-      <div class="vila-field" id="vila-field">
-        <div class="section-label" style="margin-top: 0.25rem;">Rest</div>
-        <input type="text" id="vila" placeholder="1:30" maxlength="5" inputmode="numeric">
-        <div class="input-hint">Min:sec - example. 1:30 or 2:00</div>
-      </div>
-    </div>
-
-    <div class="error-msg" id="error-msg"></div>
-
-    <button class="calc-btn" id="berakna">LET'S RUN &rarr;</button>
-
-    <div class="results" id="results">
-      <div class="results-header">Result</div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Distance(tot.)</th>
-              <th>StartTime</th>
-              <th>EndTime</th>
-            </tr>
-          </thead>
-          <tbody id="result-body"></tbody>
-        </table>
+      <div class="section">
+        <div class="section-label">Tempo</div>
+        <input type="text" id="tempo" placeholder="4:10" maxlength="5" inputmode="numeric">
+        <div class="input-hint">Min:sec per kilometer - example. 4:10</div>
       </div>
 
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="label">Total distance</div>
-          <div class="value" id="stat-dist">–</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Total time</div>
-          <div class="value" id="stat-tid">–</div>
+      <div class="section">
+        <div class="section-label">Number of intervals</div>
+        <input type="number" id="antal" placeholder="5" min="1" max="50" inputmode="numeric">
+        <div class="quick-btns" id="antal-btns">
+          <button class="quick-btn" data-target="antal" data-val="3">3</button>
+          <button class="quick-btn" data-target="antal" data-val="4">4</button>
+          <button class="quick-btn" data-target="antal" data-val="5">5</button>
+          <button class="quick-btn" data-target="antal" data-val="6">6</button>
+          <button class="quick-btn" data-target="antal" data-val="8">8</button>
+          <button class="quick-btn" data-target="antal" data-val="10">10</button>
         </div>
       </div>
+
+      <div class="section">
+        <div class="section-label">Distance per interval</div>
+        <div class="input-row">
+          <input type="number" id="langd" placeholder="400" min="1" inputmode="numeric">
+          <span style="color: var(--text-muted); font-size: 14px; white-space: nowrap;">meters</span>
+        </div>
+        <div class="quick-btns" id="langd-btns">
+          <button class="quick-btn" data-target="langd" data-val="200">200</button>
+          <button class="quick-btn" data-target="langd" data-val="400">400</button>
+          <button class="quick-btn" data-target="langd" data-val="600">600</button>
+          <button class="quick-btn" data-target="langd" data-val="800">800</button>
+          <button class="quick-btn" data-target="langd" data-val="1000">1000</button>
+          <button class="quick-btn" data-target="langd" data-val="1200">1200</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <label class="vila-toggle">
+          <input type="checkbox" id="vila-check">
+          <span>Add rest between intervals?</span>
+        </label>
+        <div class="vila-field" id="vila-field">
+          <div class="section-label" style="margin-top: 0.25rem;">Rest</div>
+          <input type="text" id="vila" placeholder="1:30" maxlength="5" inputmode="numeric">
+          <div class="input-hint">Min:sec - example. 1:30 or 2:00</div>
+        </div>
+      </div>
+
+      <div class="error-msg" id="error-msg"></div>
+
+      <button class="calc-btn" id="berakna">LET'S RUN &rarr;</button>
+
+      <div class="results" id="results">
+        <div class="results-header">Result</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Distance(tot.)</th>
+                <th>StartTime</th>
+                <th>EndTime</th>
+              </tr>
+            </thead>
+            <tbody id="result-body"></tbody>
+          </table>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="label">Total distance</div>
+            <div class="value" id="stat-dist">–</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Total time</div>
+            <div class="value" id="stat-tid">–</div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </body>
 
-  </div>
-</body>
-
-<script>
-  function parseTime(str) {
-    const s = str.trim();
-    const m = s.match(/^(\d{1,2}):(\d{2})$/);
-    if (!m) return null;
-    const min = parseInt(m[1], 10);
-    const sec = parseInt(m[2], 10);
-    if (sec >= 60) return null;
-    return min * 60 + sec;
-  }
-
-  function fmtTime(totalSec) {
-    const h = Math.floor(totalSec / 3600);
-    const m = Math.floor((totalSec % 3600) / 60);
-    const s = totalSec % 60;
-    if (h > 0) {
-      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-    }
-    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-  }
-
-  function formatDist(m) {
-    if (m >= 1000 && m % 1000 === 0) return (m / 1000) + ' km';
-    if (m >= 1000) return (m / 1000).toFixed(1).replace('.', ',') + ' km';
-    return m + ' m';
-  }
-
-  document.querySelectorAll('.quick-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
-      const val = btn.dataset.val;
-      const input = document.getElementById(target);
-      input.value = val;
-      document.querySelectorAll(`.quick-btn[data-target="${target}"]`).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  ['antal', 'langd'].forEach(id => {
-    document.getElementById(id).addEventListener('input', function () {
-      const v = this.value;
-      document.querySelectorAll(`.quick-btn[data-target="${id}"]`).forEach(b => {
-        b.classList.toggle('active', b.dataset.val === v);
-      });
-    });
-  });
-
-  document.getElementById('tempo').addEventListener('input', function () {
-    let v = this.value.replace(/[^0-9:]/g, '');
-    if (v.length === 3 && !v.includes(':') && this._prev && this._prev.length < v.length) {
-      v = v.slice(0, 1) + ':' + v.slice(1);
-    }
-    this._prev = v;
-    this.value = v;
-  });
-
-  document.getElementById('vila').addEventListener('input', function () {
-    let v = this.value.replace(/[^0-9:]/g, '');
-    if (v.length === 3 && !v.includes(':') && this._prev && this._prev.length < v.length) {
-      v = v.slice(0, 1) + ':' + v.slice(1);
-    }
-    this._prev = v;
-    this.value = v;
-  });
-
-  document.getElementById('vila-check').addEventListener('change', function () {
-    const f = document.getElementById('vila-field');
-    f.classList.toggle('visible', this.checked);
-    if (!this.checked) document.getElementById('vila').value = '';
-  });
-
-  document.getElementById('berakna').addEventListener('click', berakna);
-
-  function showError(msg) {
-    const el = document.getElementById('error-msg');
-    el.textContent = msg;
-    el.classList.add('visible');
-    document.getElementById('results').classList.remove('visible');
-  }
-
-  function clearError() {
-    document.getElementById('error-msg').classList.remove('visible');
-  }
-
-  function berakna() {
-    clearError();
-
-    const tempoStr = document.getElementById('tempo').value;
-    const antalVal = parseInt(document.getElementById('antal').value, 10);
-    const langdVal = parseInt(document.getElementById('langd').value, 10);
-    const vilaCheck = document.getElementById('vila-check').checked;
-    const vilaStr = document.getElementById('vila').value;
-
-    const tempoSec = parseTime(tempoStr);
-    if (!tempoSec) return showError('Enter tempo in format MM:SS, example. 4:10');
-    if (!antalVal || antalVal < 1 || antalVal > 50) return showError('Enter number of intervals (1–50)');
-    if (!langdVal || langdVal < 1) return showError('Enter distance per interval in meters');
-
-    let vilaSec = 0;
-    if (vilaCheck) {
-      vilaSec = parseTime(vilaStr);
-      if (!vilaSec && vilaSec !== 0) return showError('Enter rest in format MM:SS, example. 1:30');
-    }
-
-    const intervalSec = Math.round(tempoSec * (langdVal / 1000));
-
-    const tbody = document.getElementById('result-body');
-    tbody.innerHTML = '';
-
-    let cursor = 0;
-    let totalDist = 0;
-
-    for (let i = 1; i <= antalVal; i++) {
-      const start = cursor;
-      const stop = cursor + intervalSec;
-      totalDist += langdVal;
-      cursor = stop + (i < antalVal ? vilaSec : 0);
-
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${i}</td>
-        <td>${formatDist(totalDist)}</td>
-        <td>${fmtTime(start)}</td>
-        <td>${fmtTime(stop)}</td>
-      `;
-      tbody.appendChild(tr);
-    }
-
-    const totalTid = antalVal * intervalSec + Math.max(0, antalVal - 1) * vilaSec;
-
-    document.getElementById('stat-dist').textContent = formatDist(totalDist);
-    document.getElementById('stat-tid').textContent = fmtTime(totalTid);
-
-    const results = document.getElementById('results');
-    results.classList.add('visible');
-    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-</script>
+  <script src="js/scripts.js"></script>
 
 </html>
