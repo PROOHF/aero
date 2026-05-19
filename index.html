@@ -1,118 +1,131 @@
 <!DOCTYPE html>
 <html lang="sv">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-title" content="Aero">
-    <title>Aero - Intervals calculator</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Barlow:wght@400;500&display=swap"
-      rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="images/site.webmanifest">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-title" content="Aero">
+  <title>Aero - Intervals calculator</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Barlow:wght@400;500&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="images/site.webmanifest">
+</head>
 
-  <body>
+<body>
 
-    <header>
-      <div class="container">
-        <h1>AERO - Intervals calculator<span>.</span></h1>
-        <p>Calculate your intervals fast and easy.</p>
-      </div>
-    </header>
-
+  <header>
     <div class="container">
-
-      <div class="section">
-        <div class="section-label">Tempo</div>
-        <input type="text" id="tempo" placeholder="4:10" maxlength="5" inputmode="numeric">
-        <div class="input-hint">Min:sec per kilometer - example. 4:10</div>
-      </div>
-
-      <div class="section">
-        <div class="section-label">Number of intervals</div>
-        <input type="number" id="antal" placeholder="5" min="1" max="50" inputmode="numeric">
-        <div class="quick-btns" id="antal-btns">
-          <button class="quick-btn" data-target="antal" data-val="3">3</button>
-          <button class="quick-btn" data-target="antal" data-val="4">4</button>
-          <button class="quick-btn" data-target="antal" data-val="5">5</button>
-          <button class="quick-btn" data-target="antal" data-val="6">6</button>
-          <button class="quick-btn" data-target="antal" data-val="8">8</button>
-          <button class="quick-btn" data-target="antal" data-val="10">10</button>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-label">Distance per interval</div>
-        <div class="input-row">
-          <input type="number" id="langd" placeholder="400" min="1" inputmode="numeric">
-          <span style="color: var(--text-muted); font-size: 14px; white-space: nowrap;">meters</span>
-        </div>
-        <div class="quick-btns" id="langd-btns">
-          <button class="quick-btn" data-target="langd" data-val="200">200</button>
-          <button class="quick-btn" data-target="langd" data-val="400">400</button>
-          <button class="quick-btn" data-target="langd" data-val="600">600</button>
-          <button class="quick-btn" data-target="langd" data-val="800">800</button>
-          <button class="quick-btn" data-target="langd" data-val="1000">1000</button>
-          <button class="quick-btn" data-target="langd" data-val="1200">1200</button>
-        </div>
-      </div>
-
-      <div class="section">
-        <label class="vila-toggle">
-          <input type="checkbox" id="vila-check">
-          <span>Add rest between intervals?</span>
-        </label>
-        <div class="vila-field" id="vila-field">
-          <div class="section-label" style="margin-top: 0.25rem;">Rest</div>
-          <input type="text" id="vila" placeholder="1:30" maxlength="5" inputmode="numeric">
-          <div class="input-hint">Min:sec - example. 1:30 or 2:00</div>
-        </div>
-      </div>
-
-      <div class="error-msg" id="error-msg"></div>
-
-      <button class="calc-btn" id="berakna">LET'S RUN &rarr;</button>
-
-      <div class="results" id="results">
-        <div class="results-header">Result</div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Distance(tot.)</th>
-                <th>StartTime</th>
-                <th>EndTime</th>
-              </tr>
-            </thead>
-            <tbody id="result-body"></tbody>
-          </table>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="label">Total distance</div>
-            <div class="value" id="stat-dist">–</div>
-          </div>
-          <div class="stat-card">
-            <div class="label">Total time</div>
-            <div class="value" id="stat-tid">–</div>
-          </div>
-        </div>
-      </div>
-
+      <h1>AERO - INTERVAL CALCULATOR<span>.</span></h1>
+      <p>Calculate times for your interval session</p>
     </div>
-  </body>
+  </header>
 
-  <script src="js/scripts.js"></script>
+  <div class="container">
+
+    <div class="section">
+      <div class="section-label">Pace</div>
+      <input type="text" id="tempo" placeholder="4:10" maxlength="5" inputmode="numeric">
+      <div class="input-hint">min:sec per kilometer — e.g. 4:10</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Number of intervals</div>
+      <input type="number" id="antal" placeholder="5" min="1" max="50" inputmode="numeric">
+      <div class="quick-btns" id="antal-btns">
+        <button class="quick-btn" data-target="antal" data-val="3">3</button>
+        <button class="quick-btn" data-target="antal" data-val="4">4</button>
+        <button class="quick-btn" data-target="antal" data-val="5">5</button>
+        <button class="quick-btn" data-target="antal" data-val="6">6</button>
+        <button class="quick-btn" data-target="antal" data-val="8">8</button>
+        <button class="quick-btn" data-target="antal" data-val="10">10</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Distance per interval</div>
+      <div class="input-row">
+        <input type="number" id="langd" placeholder="400" min="1" inputmode="numeric">
+        <span style="color: var(--text-muted); font-size: 14px; white-space: nowrap;">meters</span>
+      </div>
+      <div class="quick-btns" id="langd-btns">
+        <button class="quick-btn" data-target="langd" data-val="200">200</button>
+        <button class="quick-btn" data-target="langd" data-val="400">400</button>
+        <button class="quick-btn" data-target="langd" data-val="600">600</button>
+        <button class="quick-btn" data-target="langd" data-val="800">800</button>
+        <button class="quick-btn" data-target="langd" data-val="1000">1000</button>
+        <button class="quick-btn" data-target="langd" data-val="1200">1200</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="vila-toggle">
+        <input type="checkbox" id="vila-check">
+        <span>Add rest time between intervals</span>
+      </label>
+      <div class="vila-field" id="vila-field">
+        <div class="section-label" style="margin-top: 0.25rem;">Rest time</div>
+        <input type="text" id="vila" placeholder="1:30" maxlength="5" inputmode="numeric">
+        <div class="input-hint">min:sec — e.g. 1:30 or 2:00</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <label class="vila-toggle">
+        <input type="checkbox" id="start-check">
+        <span>Adjust start time (e.g. after warm-up)</span>
+      </label>
+      <div class="vila-field" id="start-field">
+        <div class="section-label" style="margin-top: 0.25rem;">Start time</div>
+        <input type="text" id="starttid" placeholder="15:00" maxlength="5" inputmode="numeric">
+        <div class="input-hint">min:sec - e.g. 15:00 if you warmed up for 15 min</div>
+      </div>
+    </div>
+
+    <div class="error-msg" id="error-msg"></div>
+
+    <button class="calc-btn" id="berakna">LET'S RUN &rarr;</button>
+
+    <div class="results" id="results">
+      <div class="results-header">Results</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Distance (total)</th>
+              <th>Start time</th>
+              <th>End time</th>
+            </tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="label">Total distance (intervals)</div>
+          <div class="value" id="stat-dist">–</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total time (intervals)</div>
+          <div class="value" id="stat-tid">–</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+<script src="js/scripts.js"></script>
 
 </html>
