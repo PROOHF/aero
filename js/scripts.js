@@ -64,8 +64,8 @@ document.getElementById('vila').addEventListener('input', function () {
 
 document.getElementById('starttid').addEventListener('input', function () {
   let v = this.value.replace(/[^0-9:]/g, '');
-  if (v.length === 3 && !v.includes(':') && this._prev && this._prev.length < v.length) {
-    v = v.slice(0, 1) + ':' + v.slice(1);
+  if (v.length === 4 && !v.includes(':') && this._prev && this._prev.length < v.length) {
+    v = v.slice(0, 2) + ':' + v.slice(2);
   }
   this._prev = v;
   this.value = v;
@@ -149,7 +149,10 @@ function berakna() {
 
   const totalTid = antalVal * intervalSec + Math.max(0, antalVal - 1) * vilaSec;
 
+  const speedKmh = (3600 / tempoSec).toFixed(2);
+
   document.getElementById('stat-dist').textContent = formatDist(totalDist);
+  document.getElementById('stat-speed').textContent = speedKmh;
   document.getElementById('stat-tid').textContent = fmtTime(totalTid);
 
   const results = document.getElementById('results');
